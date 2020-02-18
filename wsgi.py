@@ -21,7 +21,7 @@ def save_request(uuid, request):
     req_data['form'] = request.form
     req_data['remote_addr'] = request.remote_addr
     files = []
-    for name, fs in request.files.iteritems():
+    for name, fs in request.files.items():
         dst = tempfile.NamedTemporaryFile()
         fs.save(dst)
         dst.flush()
