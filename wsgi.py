@@ -10,16 +10,16 @@ application.debug = True
 
 def save_request(uuid, request):
     req_data = {}
-    req_data['uuid'] = uuid.decode()
-    req_data['endpoint'] = request.endpoint.decode()
-    req_data['method'] = request.method.decode()
+    req_data['uuid'] = uuid
+    req_data['endpoint'] = request.endpoint
+    req_data['method'] = request.method
     req_data['cookies'] = request.cookies.to_dict()
     req_data['data'] = request.data.decode()
     req_data['headers'] = dict(request.headers)
     req_data['headers'].pop('Cookie', None)
     req_data['args'] = request.args.to_dict()
     req_data['form'] = request.form.to_dict()
-    req_data['remote_addr'] = request.remote_addr.decode()
+    req_data['remote_addr'] = request.remote_addr
     files = []
     for name, fs in request.files.items():
         dst = tempfile.NamedTemporaryFile()
@@ -34,9 +34,9 @@ def save_request(uuid, request):
 
 def save_response(uuid, resp):
     resp_data = {}
-    resp_data['uuid'] = uuid.decode()
+    resp_data['uuid'] = uuid
     resp_data['status_code'] = resp.status_code.decode()
-    resp_data['status'] = resp.status.decode()
+    resp_data['status'] = resp.status
     resp_data['headers'] = dict(resp.headers)
     resp_data['data'] = resp.response.decode()
     return resp_data
