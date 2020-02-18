@@ -41,11 +41,11 @@ def save_response(uuid, resp):
     resp_data['data'] = resp.response
     return resp_data
 
-@app.before_request
+@application.before_request
 def before_request():
     print(request.method, request.endpoint)
 
-@app.after_request
+@application.after_request
 def after_request(resp):
     resp.headers.add('Access-Control-Allow-Origin', '*')
     resp.headers.add('Access-Control-Allow-Headers', 'Content-Type, X-Token')
