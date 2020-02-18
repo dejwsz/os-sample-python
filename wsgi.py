@@ -43,7 +43,7 @@ def save_response(uuid, resp):
 
 @app.before_request
 def before_request():
-    print request.method, request.endpoint
+    print(request.method, request.endpoint)
 
 @app.after_request
 def after_request(resp):
@@ -51,7 +51,7 @@ def after_request(resp):
     resp.headers.add('Access-Control-Allow-Headers', 'Content-Type, X-Token')
     resp.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
     resp_data = save_response(g.uuid, resp)
-    print 'Response:: ', json.dumps(resp_data, indent=4)
+    print('Response:: ', json.dumps(resp_data, indent=4))
     return resp
 
 @application.route("/")
