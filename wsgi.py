@@ -51,6 +51,7 @@ def after_request(resp):
     resp.headers.add('Access-Control-Allow-Headers', 'Content-Type, X-Token')
     resp.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE')
     resp_data = save_response(g.uuid, resp)
+    print(resp_data, flush=True)
     print('Response:: ', json.dumps(resp_data, indent=4))
     return resp
 
