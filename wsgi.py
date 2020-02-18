@@ -14,7 +14,7 @@ def save_request(uuid, request):
     req_data['endpoint'] = request.endpoint
     req_data['method'] = request.method
     req_data['cookies'] = request.cookies.to_dict()
-    req_data['data'] = request.data
+    req_data['data'] = request.data.decode('ascii')
     req_data['headers'] = dict(request.headers)
     req_data['headers'].pop('Cookie', None)
     req_data['args'] = request.args.to_dict()
