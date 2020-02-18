@@ -15,7 +15,7 @@ def save_request(uuid, request):
     req_data['method'] = request.method
     req_data['cookies'] = request.cookies.to_dict()
     req_data['data'] = request.data
-    req_data['headers'] = request.headers.to_dict()
+    req_data['headers'] = dict(request.headers)
     req_data['headers'].pop('Cookie', None)
     req_data['args'] = request.args.to_dict()
     req_data['form'] = request.form.to_dict()
@@ -37,7 +37,7 @@ def save_response(uuid, resp):
     resp_data['uuid'] = uuid
     resp_data['status_code'] = resp.status_code
     resp_data['status'] = resp.status
-    resp_data['headers'] = resp.headers.to_dict()
+    resp_data['headers'] = dict(resp.headers)
     resp_data['data'] = resp.response
     return resp_data
 
