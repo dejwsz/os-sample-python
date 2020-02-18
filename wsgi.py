@@ -58,7 +58,8 @@ def after_request(resp):
 def hello():
     g.uuid = uuid.uuid1().hex
     req_data = save_request(g.uuid, request)
-    resp = Response(json.dumps(req_data.decode(), indent=4), mimetype='application/json')
+    print(req_data, flush=True)
+    resp = Response(json.dumps(req_data, indent=4), mimetype='application/json')
     resp.set_cookie('cookie-name', value='cookie-value')
     return resp
 
