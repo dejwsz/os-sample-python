@@ -38,7 +38,7 @@ def save_response(uuid, resp):
     resp_data['status_code'] = resp.status_code
     resp_data['status'] = resp.status
     resp_data['headers'] = dict(resp.headers)
-    resp_data['data'] = resp.response.force_encoding('utf-8')
+    resp_data['data'] = "".join(resp.response)
     return resp_data
 
 @application.before_request
