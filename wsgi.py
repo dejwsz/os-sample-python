@@ -35,7 +35,7 @@ def save_request(uuid, request):
 def save_response(uuid, resp):
     resp_data = {}
     resp_data['uuid'] = uuid
-    resp_data['status_code'] = resp.status_code.decode()
+    resp_data['status_code'] = resp.status_code
     resp_data['status'] = resp.status
     resp_data['headers'] = dict(resp.headers)
     resp_data['data'] = resp.response.decode()
